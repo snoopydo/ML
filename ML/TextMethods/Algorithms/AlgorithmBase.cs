@@ -153,9 +153,9 @@ namespace ML.TextMethods.Algorithms
     {
       base.Deserialize(ser);
 
+      m_FeatureExtractor = ser.ReadObject<ITextFeatureExtractor>("FEATURE_EXTRACTOR");
       m_Preprocessor = ser.ReadObject<ITextPreprocessor>("PREPROCESSOR");
       m_Vocabulary   = ser.ReadStrings("VOCABULARY").ToList();
-      m_FeatureExtractor = ser.ReadObject<ITextFeatureExtractor>("FEATURE_EXTRACTOR");
       m_FeatureExtractor.Preprocessor = m_Preprocessor;
       m_FeatureExtractor.Vocabulary = m_Vocabulary;
       m_PriorProbs = ser.ReadDoubles("PRIORS").ToArray();
